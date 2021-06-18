@@ -12,28 +12,28 @@ beforeEach(async () => {
 afterAll(async () => {
     await db.destroy()
 })
-describe("model file", ()=>{
-    describe("getAll()",()=>{
-        test("can get all people in db", async ()=>{
+describe("model file", () => {
+    describe("getAll()", () => {
+        test("can get all people in db", async () => {
             const allpeople = await people.getAll();
             expect(allpeople).toHaveLength(3);
         })
-        test("can get all people after inserting", async ()=>{
-            await db("people").insert({name:"tony"});
+        test("can get all people after inserting", async () => {
+            await db("people").insert({ name: "tony" });
             const allpeople = await people.getAll();
             expect(allpeople).toHaveLength(4);
         })
     })
-    describe("getById()", ()=>{
-        test("can get people by its id", async ()=>{
+    describe("getById()", () => {
+        test("can get people by its id", async () => {
             const jack = await people.getById(1);
-            expect(jack).toMatchObject({people_id:1,name:"jack"});
+            expect(jack).toMatchObject({ people_id: 1, name: "jack" });
         })
     })
 
-    describe("add()", ()=>{
-        test("return new people to the database after adding", async ()=>{
-            await people.add({name:"newPeople"});
+    describe("add()", () => {
+        test("return new people to the database after adding", async () => {
+            await people.add({ name: "newPeople" });
             const allPeople = await people.getAll();
             expect(allPeople).toHaveLength(4);
         })

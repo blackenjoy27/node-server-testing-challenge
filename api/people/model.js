@@ -5,7 +5,7 @@ const getAll = () => {
 }
 
 const getById = (id) => {
-    return db("people").where("people_id",id).first();
+    return db("people").where("people_id", id).first();
 }
 
 const add = async (people) => {
